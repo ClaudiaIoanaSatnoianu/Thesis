@@ -1,0 +1,55 @@
+<div ng-controller="attendanceController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="schedule()" class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <h3 align="center">Tabela activitati individuale</h3>
+    <br/>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th></th>
+                <th>Tip</th>
+                <th>Materie</th>
+                <th>Grupa</th>
+                <th>Serie</th>
+                <th>An</th>
+                <th>Specializare</th>
+            </tr>
+            <tr ng-repeat="schedule in scheduleList">
+                <td>
+                    <div class="dropup">
+                        <button ng-click="viewAttendance(schedule.id)" class="btn btn-xs btn-success">Vizualizeaza</button>
+                    </div>
+                </td>
+                <td>{{schedule.type}}</td>
+                <td>{{schedule.subject}}</td>
+                <td>{{schedule.group}}</td>
+                <td>{{schedule.batch}}</td>
+                <td>{{schedule.year}}</td>
+                <td>{{schedule.specialization}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

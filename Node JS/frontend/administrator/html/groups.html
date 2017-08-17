@@ -1,0 +1,53 @@
+<div ng-controller="groupController">
+    <div class="claudiaDivCenter">
+        <form>
+
+            <div class="alert alert-danger" ng-show="group.__request.error">{{group.__request.message}}</div>
+
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleName">Grupa</label>
+                    <input type="text" class="form-control" id="exampleName" ng-model="group.name" capitalize/>
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="exampleBatch">Serie</label>
+                    <select ng-click="chooseSpecializationAndYearFirst()" id="exampleBatch" ng-model="group.batch_id" class="form-control" ng-required>
+                        <option ng-repeat="batch in batches" value="{{batch.id}}">{{batch.name}} (an: {{batch.year}}, specializare: {{batch.specialization.name}})</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addGroup(group)">Adauga grupa</button>
+        </form>
+    </div>
+    <br/>
+    <h3 align="center">Tabela grupe</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>ID grupa</th>
+            <th>Denumire grupa</th>
+            <th>ID serie</th>
+            <th>Denumre serie</th>
+            <th>An</th>
+            <th>Denumire specializare</th>
+        </tr>
+        <tr ng-repeat="group in groups">
+            <td>
+                <button class="btn btn-xs btn-success" ng-click="editGroup(group.id)">Edit</button>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-danger" ng-click="deleteGroup(group.id)">Delete</button>
+            </td>
+            <td>{{group.id}}</td>
+            <td>{{group.name}}</td>
+            <td>{{group.batch_id}}</td>
+            <td>{{group.batch.name}}</td>
+            <td>{{group.batch.year}}</td>
+            <td>{{group.batch.specialization.name}}</td>
+        </tr>
+    </table>
+</div>

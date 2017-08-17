@@ -1,0 +1,62 @@
+<div ng-controller="selectedAttendanceController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="attendance()">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="schedule()" class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <h3 align="center">Tabela prezenta pentru {{title}}</h3>
+    <br/><br/>
+    <form>
+        <div class="alert alert-danger" ng-show="attendance.__request.error">{{attendance.__request.message}}</div>
+        <div class="divFloatLeftLeft">
+            <div class="form-group">
+                <label>Student</label>
+                <select ng-model="attendance.student" class="form-control" ng-required>
+                    <option ng-repeat="student in attendances" value="{{student.student_id}}">{{student.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="divFloatLeftRight">
+            <label>Data prezenta</label>
+            <select ng-model="attendance.schedule" class="form-control" ng-required>
+                <option ng-repeat="schedule in schedules" value="{{schedule.id}}">{{schedule.date}}</option>
+            </select>
+        </div>
+    </form>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addAttendance(attendance)">Adauga prezenta</button>
+    <br/><br/><br/>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Nume student</th>
+                <th ng-repeat="date in dates">{{date}}</th>
+                <th>Total</th>
+            </tr>
+            <tr ng-repeat="attendance in attendances">
+                <td>{{attendance.name}}</td>
+                <td align="center" ng-click="deleteAttendance(att.id, att.string)"
+                     ng-repeat="att in attendance.studentAttendance track by $index">{{att.string}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

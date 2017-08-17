@@ -1,0 +1,47 @@
+<div ng-controller="selectedEvaluationController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="attendance()" class="hand">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="schedule()" class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <h3 align="center">Evaluare pentru {{title}}</h3>
+    <br/><br/>
+    <h5><b>Data evaluare:</b> {{date}}<br/><b>Intrebare:</b> {{question}}</h5>
+    <br/><br/>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Nume</th>
+                <th>Raspuns</th>
+                <th>Nota/Calificativ</th>
+            </tr>
+            <tr ng-repeat="student in students">
+                <td>{{student.student_name}}</td>
+                <td>{{student.student_answer}}</td>
+                <td><input ng-if="student.student_answer" ng-model="grade" ng-blur="saveGrade(student.answer_id, grade)"
+                           class="form-control" ng-value="{{student.student_grade}}"/></td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="returnToEvaluations()">Am terminat de notat raspusurile</button>
+</div>

@@ -1,0 +1,85 @@
+<div ng-controller="studentController">
+
+    <div class="claudiaDivCenter">
+        <form>
+
+            <div class="alert alert-danger" ng-show="student.__request.error">{{student.__request.message}}</div>
+
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleId">ID</label>
+                    <input type="text" class="form-control" id="exampleId" ng-model="student.id"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFirstName">Nume</label>
+                    <input type="text" class="form-control" id="exampleFirstName" ng-model="student.last_name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleLastName">Prenume</label>
+                    <input type="text" class="form-control" id="exampleLastName" ng-model="student.first_name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFirstLetter">Initiala prenume tata</label>
+                    <input type="text" class="form-control" id="exampleFirstLetter" ng-model="student.father_first_letter" capitalize/>
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="examplePhoneNumber">Numar de telefon</label>
+                    <input type="text" class="form-control" id="examplePhoneNumber" ng-model="student.phone_number" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleEmail">Email</label>
+                    <input type="text" class="form-control" id="exampleEmail" ng-model="student.email"/>
+                </div>
+                <div class="form-group">
+                    <label for="examplePassword">Parola</label>
+                    <input type="password" class="form-control" id="examplePassword" ng-model="student.password" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleGroup">Grupa</label>
+                    <select id="exampleGroup" ng-model="student.group_id" class="form-control" ng-required>
+                        <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}} (serie: {{group.batch.name}},
+                            an: {{group.batch.year}}, specializare: {{group.batch.specialization.name}})</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addStudent(student)">Adauga student</button>
+        </form>
+    </div>
+    <br/>
+    <h3 align="center">Tabela studenti</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Initiala prenume tata</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>An</th>
+            <th>ID grupa</th>
+            <th>Grupa</th>
+            <th>Serie</th>
+            <th>Specializare</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td><button class="btn btn-xs btn-success" ng-click="editStudent(student.id)">Editeaza</button></td>
+            <td><button class="btn btn-xs btn-danger" ng-click="deleteStudent(student.id)">Sterge</button></td>
+            <td>{{student.id}}</td>
+            <td>{{student.last_name}}</td>
+            <td>{{student.first_name}}</td>
+            <td>{{student.father_first_letter}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.phone_number}}</td>
+            <td>{{student.group.batch.year}}</td>
+            <td>{{student.group_id}}</td>
+            <td>{{student.group.name}}</td>
+            <td>{{student.group.batch.name}}</td>
+            <td>{{student.group.batch.specialization.name}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,66 @@
+<div ng-controller="professorController">
+    <div class="claudiaDivCenter">
+        <form>
+
+            <div class="alert alert-danger" ng-show="professor.__request.error">{{professor.__request.message}}</div>
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleId">ID</label>
+                    <input type="text" class="form-control" id="exampleId" ng-model="professor.id"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleName">Nume</label>
+                    <input type="text" class="form-control" id="exampleName" ng-model="professor.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFirstLetter">Initiala prenume tata</label>
+                    <input type="text" class="form-control" id="exampleFirstLetter" ng-model="professor.father_first_letter" capitalize/>
+                </div>
+                <div class="form-group">
+                    <label for="examplePhoneNumber">Numar de telefon</label>
+                    <input type="text" class="form-control" id="examplePhoneNumber" ng-model="professor.phone_number" />
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="exampleEmail">Email</label>
+                    <input type="text" class="form-control" id="exampleEmail" ng-model="professor.email"/>
+                </div>
+                <div class="form-group">
+                    <label for="examplePassword">Parola</label>
+                    <input type="password" class="form-control" id="examplePassword" ng-model="professor.password" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleBle">Adresa MAC beacon</label>
+                    <input type="text" class="form-control" id="exampleBle" ng-model="professor.ble_device" capitalize/>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addProfessor(professor)">Adauga profesor</button>
+        </form>
+    </div>
+    <br/>
+    <h3 align="center">Tabela profesori</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Initiala prenume tata</th>
+            <th>Email</th>
+            <th>Numar de telefon</th>
+            <th>Beacon</th>
+        </tr>
+        <tr ng-repeat="professor in professors">
+            <td><button class="btn btn-xs btn-success" ng-click="editProfessor(professor.id)">Editeaza</button></td>
+            <td><button class="btn btn-xs btn-danger" ng-click="deleteProfessor(professor.id)">Stergere</button></td>
+            <td>{{professor.id}}</td>
+            <td>{{professor.name}}</td>
+            <td>{{professor.father_first_letter}}</td>
+            <td>{{professor.email}}</td>
+            <td>{{professor.phone_number}}</td>
+            <td>{{professor.ble_device}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+<div ng-controller="specializationController">
+    <div class="claudiaDivCenter">
+        <form>
+
+            <div class="alert alert-danger" ng-show="specialization.__request.error">{{specialization.__request.message}}</div>
+
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleCode">Cod specializare</label>
+                    <input type="text" class="form-control" id="exampleCode" ng-model="specialization.code" capitalize/>
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="exampleName">Denumire specializare</label>
+                    <input type="text" class="form-control" id="exampleName" ng-model="specialization.name"/>
+                </div>
+            </div>
+            <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addSpecialization(specialization)">Adauga specializare</button>
+        </form>
+    </div>
+    <br/>
+    <h3 align="center">Tabela specializari</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>ID</th>
+            <th>Cod</th>
+            <th>Denumire</th>
+        </tr>
+        <tr ng-repeat="specialization in specializations">
+            <td><button class="btn btn-xs btn-success" ng-click="editSpecialization(specialization.id)">Edit</button></td>
+            <td><button class="btn btn-xs btn-danger" ng-click="deleteSpecialization(specialization.id)">Delete</button></td>
+            <td>{{specialization.id}}</td>
+            <td>{{specialization.code}}</td>
+            <td>{{specialization.name}}</td>
+        </tr>
+    </table>
+</div>

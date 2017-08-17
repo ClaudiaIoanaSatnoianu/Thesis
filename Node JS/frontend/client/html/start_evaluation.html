@@ -1,0 +1,35 @@
+<div ng-controller="startEvaluationController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="attendance()" class="hand">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="schedule()" class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <h3 align="center">Evaluare pentru {{title}}</h3>
+    <br/><br/><br/>
+    <div class="alert alert-danger" ng-show="startEvaluation.__request.error">{{startEvaluation.__request.message}}</div>
+    <div class="form-group">
+        <label>Intrebare</label>
+        <textarea type="text" class="form-control" id="exampleSubject" ng-model="question"/>
+    </div>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="sendQuestion(question)">Trimite intrebare</button>
+</div>

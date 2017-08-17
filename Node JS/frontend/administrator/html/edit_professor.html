@@ -1,0 +1,41 @@
+<div ng-controller="editProfessorController" class="claudiaDivCenter" ng-init="init()">
+        <form>
+
+            <div class="alert alert-danger" ng-show="editProfessor.__request.error">{{editProfessor.__request.message}}</div>
+
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleName">Nume</label>
+                    <input type="text" class="form-control" id="exampleName" ng-model="professor.name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFirstLetter">Initiala prenume tata</label>
+                    <input type="text" class="form-control" id="exampleFirstLetter" ng-model="professor.father_first_letter" capitalize/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleEmail">Email</label>
+                    <input type="text" class="form-control" id="exampleEmail" ng-model="professor.email"/>
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="examplePhoneNumber">Numar de telefon</label>
+                    <input type="text" class="form-control" id="examplePhoneNumber" ng-model="professor.phone_number" />
+                </div>
+                <div class="form-group">
+                    <label for="examplePassword">Parola</label>
+                    <input type="password" class="form-control" id="examplePassword" ng-model="professor.password" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleBle">Adresa MAC beacon</label>
+                    <input type="text" class="form-control" id="exampleBle" ng-model="professor.ble_device" capitalize/>
+                </div>
+            </div>
+            <br/>
+            <div class="floatButtonsRight">
+                <br/>
+                <button class="btn btn-lg btn-default " ng-click="cancelEditProfessor()">Renunta</button>
+                <button class="btn btn-lg btn-success floatButtonsRight" ng-click="editProfessor(professor)">Salveaza</button>
+            </div>
+        </form>
+</div>

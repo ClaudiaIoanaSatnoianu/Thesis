@@ -1,0 +1,47 @@
+<div ng-controller="editStudentController" class="claudiaDivCenter" ng-init="init()">
+        <form>
+
+            <div class="alert alert-danger" ng-show="editStudent.__request.error">{{editStudent.__request.message}}</div>
+
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleFirstName">Nume</label>
+                    <input type="text" class="form-control" id="exampleFirstName" ng-model="student.last_name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleLastName">Prenume</label>
+                    <input type="text" class="form-control" id="exampleLastName" ng-model="student.first_name"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFirstLetter">Initiala prenume tata</label>
+                    <input type="text" class="form-control" id="exampleFirstLetter" ng-model="student.father_first_letter" capitalize/>
+                </div>
+                <div class="form-group">
+                    <label for="examplePhoneNumber">Numar de telefon</label>
+                    <input type="text" class="form-control" id="examplePhoneNumber" ng-model="student.phone_number" />
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="exampleEmail">Email</label>
+                    <input type="text" class="form-control" id="exampleEmail" ng-model="student.email"/>
+                </div>
+                <div class="form-group">
+                    <label for="examplePassword">Parola</label>
+                    <input type="password" class="form-control" id="examplePassword" ng-model="student.password" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleGroup">Grupa</label>
+                    <select id="exampleGroup" ng-model="student.group_id" class="form-control" ng-required>
+                        <option ng-repeat="group in groups" value="{{group.id}}">{{group.name}} (serie: {{group.batch.name}},
+                            an: {{group.batch.year}}, specializare: {{group.batch.specialization.name}})</option>
+                    </select>
+                </div>
+                <div class="floatButtonsRight">
+                    <br/>
+                    <button class="btn btn-lg btn-default " ng-click="cancelEditStudent()">Renunta</button>
+                    <button class="btn btn-lg btn-success floatButtonsRight" ng-click="editStudent(student)">Saleaza</button>
+                </div>
+            </div>
+        </form>
+</div>

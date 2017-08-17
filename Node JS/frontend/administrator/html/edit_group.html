@@ -1,0 +1,26 @@
+<div ng-controller="editGroupController" class="claudiaDivCenter" ng-init="init()">
+    <form>
+
+        <div class="alert alert-danger" ng-show="editGroup.__request.error">{{editGroup.__request.message}}</div>
+
+        <div class="divFloatLeftLeft">
+            <div class="form-group">
+                <label for="exampleName">Grupa</label>
+                <input type="text" class="form-control" id="exampleName" ng-model="group.name" capitalize/>
+            </div>
+        </div>
+        <div class="divFloatLeftRight">
+            <div class="form-group">
+                <label for="exampleBatch">Serie</label>
+                <select id="exampleBatch" ng-model="group.batch_id" class="form-control" ng-required>
+                    <option ng-repeat="batch in batches" value="{{batch.id}}">{{batch.name}} (an: {{batch.year}}, specializare: {{batch.specialization.name}})</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="floatButtonsRight">
+            <button class="btn btn-lg btn-default " ng-click="cancelEditGroup()">Renunta</button>
+            <button class="btn btn-lg btn-success floatButtonsRight" ng-click="editGroup(group)">Salveaza</button>
+        </div>
+    </form>
+</div>

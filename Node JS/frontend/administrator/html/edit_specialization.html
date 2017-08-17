@@ -1,0 +1,24 @@
+<div ng-controller="editSpecializationController" class="claudiaDivCenter" ng-init="init()">
+    <form>
+
+        <div class="alert alert-danger" ng-show="editSpecialization.__request.error">{{editSpecialization.__request.message}}</div>
+
+        <div class="divFloatLeftLeft">
+            <div class="form-group">
+                <label for="exampleCode">Cod specializare</label>
+                <input type="text" class="form-control" id="exampleCode" ng-model="specialization.code" capitalize/>
+            </div>
+        </div>
+        <div class="divFloatLeftRight">
+            <div class="form-group">
+                <label for="exampleName">Denumire specializare</label>
+                <input type="text" class="form-control" id="exampleName" ng-model="specialization.name"/>
+            </div>
+        </div>
+        <br/>
+        <div class="floatButtonsRight">
+            <button class="btn btn-lg btn-default " ng-click="cancelEditSpecialization()">Renunta</button>
+            <button class="btn btn-lg btn-success floatButtonsRight" ng-click="editSpecialization(specialization)">Salveaza</button>
+        </div>
+    </form>
+</div>

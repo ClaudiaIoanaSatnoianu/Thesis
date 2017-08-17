@@ -1,0 +1,133 @@
+<div ng-controller="scheduleController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="attendance()" class="hand">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <div class="claudiaDivCenter">
+        <form>
+            <div class="alert alert-danger" ng-show="schedule.__request.error">{{schedule.__request.message}}</div>
+            <div class="divFloatLeftLeft">
+                <div class="form-group">
+                    <label for="exampleType">Tip</label>
+                    <select ng-click="changeTarget(event.type)" id="exampleType" ng-model="event.type" class="form-control" ng-required>
+                        <option value="curs">Curs</option>
+                        <option value="seminar">Seminar</option>
+                    </select>
+                    <br/>
+                    <div class="form-group">
+                        <label for="exampleSubject">Materie</label>
+                        <input type="text" class="form-control" id="exampleSubject" ng-model="event.subject"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleRoom">Sala</label>
+                        <input type="text" class="form-control" id="exampleRoom" ng-model="event.room"/>
+                    </div>
+                </div>
+            </div>
+            <div class="divFloatLeftRight">
+                <div class="form-group">
+                    <label for="exampleTarget">Serie/Grupa</label>
+                    <select id="exampleTarget" ng-model="event.target_id" class="form-control" ng-required>
+                        <option ng-repeat="target in targets" value="{{target.id}}">{{target.content}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="divFloatLeftLeft">
+                        <label for="exampleStartTime">Data inceput</label>
+                        <input id="exampleStartTime" class="form-control" type="datetime-local" ng-model="event.start_time">
+                    </div>
+                    <div class="divFloatLeftRight">
+                        <label for="exampleEndTime">Data sfarsit</label>
+                        <input id="exampleEndTime" class="form-control" type="datetime-local" ng-model="event.end_time">
+                    </div>
+                </div>
+                <br/><br/><br/><br/>
+                <div class="form-group">
+                    <div class="divFloatLeftLeft">
+                        <label for="exampleRepeats">Numar repetari</label>
+                        <input id="exampleRepeats" class="form-control" type="text" ng-model="event.repeats">
+                    </div>
+                    <div class="divFloatLeftRight">
+                        <label for="examplePeriod">Perioada</label>
+                        <select id="examplePeriod" ng-model="event.period" class="form-control" ng-required>
+                            <option value="weekly">saptamanal</option>
+                            <option value="twoweeks">o data la doua saptamani</option>
+                            <option value="monthly">lunar</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </form>
+    </div>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addEvent(event)">Adauga activitate</button>
+    <br/><br/>
+    <button class="btn btn-lg btn-warning claudiaButtonCenter" ng-click="googleCalendarLogin()">Importa activitati din Google Calendar</button>
+    <br/> <br/><br/>
+    <h3 align="center">Tabela activitati</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Tip</th>
+            <th>Materie</th>
+            <th>Sala</th>
+            <th>Grupa</th>
+            <th>Serie</th>
+            <th>An</th>
+            <th>Specializare</th>
+            <th>Inceput</th>
+            <th>Sfarsit</th>
+        </tr>
+        <tr ng-repeat="sch in schedule">
+            <td>
+                <div class="dropup">
+                    <button class="btn btn-xs btn-success" data-toggle="dropdown">Edit</button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="editEvent(sch,'one')">aceasta activitate</a></li>
+                        <li><a ng-click="editEvent(sch,'multiple')">activitatile din aceasta serie incepand cu aceasta activitate</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div class="dropup">
+                    <button class="btn btn-xs btn-danger" data-toggle="dropdown">Sterge</button>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="deleteEvent(sch)">aceasta activitate</a></li>
+                        <li><a ng-click="deleteEvents(sch)">activitatile din aceasta serie incepand cu aceasta activitate</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>{{sch.type}}</td>
+            <td>{{sch.subject}}</td>
+            <td>{{sch.room}}</td>
+            <td>{{sch.group}}</td>
+            <td>{{sch.batch}}</td>
+            <td>{{sch.year}}</td>
+            <td>{{sch.specialization}}</td>
+            <td>{{sch.start_time}}</td>
+            <td>{{sch.end_time}}</td>
+        </tr>
+    </table>
+</div>

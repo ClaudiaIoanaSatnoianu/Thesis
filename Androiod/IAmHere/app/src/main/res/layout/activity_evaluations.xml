@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:padding="10dp"
+    tools:context="com.example.claudia.iamhere.EvaluationsActivity">
+
+    <ProgressBar
+        android:id="@+id/evaluations_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_below="@+id/evaluations_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/evaluations_title"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+        <Space
+            android:id="@+id/lod"
+            android:layout_below="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <ListView
+            android:layout_below="@+id/lod"
+            android:id="@+id/evaluations_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Space
+            android:id="@+id/lod"
+            android:layout_below="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/button_report_evaluations"
+            android:text="@string/evaluations_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextDark"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>

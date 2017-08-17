@@ -1,0 +1,56 @@
+<div ng-controller="batchController">
+    <div class="claudiaDivCenter">
+        <form>
+            <div class="alert alert-danger" ng-show="batch.__request.error">{{batch.__request.message}}</div>
+            <div class="divFloatLeftLeftThree">
+                <div class="form-group">
+                    <label for="exampleSpecialization">Specializare</label>
+                    <select id="exampleSpecialization" ng-model="batch.specialization_id" class="form-control" ng-required>
+                        <option ng-repeat="specialization in specializations" value="{{specialization.id}}">
+                            id: {{specialization.id}}, cod: {{specialization.code}}, denumire: {{specialization.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="divFloatLeftLeftThree">
+                <div class="form-group">
+                    <label for="exampleYear">An</label>
+                    <input type="text" class="form-control" id="exampleYear" ng-model="batch.year"/>
+                </div>
+            </div>
+            <div class="divFloatLeftLeftThree noMarginRight">
+                <div class="form-group">
+                <label for="exampleName">Serie</label>
+                <input type="text" class="form-control" id="exampleName" ng-model="batch.name" capitalize/>
+            </div>
+            </div>
+            <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="addBatch(batch)">Adauga serie</button>
+        </form>
+    </div>
+    <br/>
+    <h3 align="center">Tabela serii</h3>
+    <br/>
+    <table class="table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>ID</th>
+            <th>Denumire serie</th>
+            <th>An</th>
+            <th>ID specializare</th>
+            <th>Denumire specializare</th>
+        </tr>
+        <tr ng-repeat="batch in batches">
+            <td>
+                <button class="btn btn-xs btn-success" ng-click="editBatch(batch.id)">Edit</button>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-danger" ng-click="deleteBatch(batch.id)">Delete</button>
+            </td>
+            <td>{{batch.id}}</td>
+            <td>{{batch.name}}</td>
+            <td>{{batch.year}}</td>
+            <td>{{batch.specialization_id}}</td>
+            <td>{{batch.specialization.name}}</td>
+        </tr>
+    </table>
+</div>

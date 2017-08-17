@@ -1,0 +1,49 @@
+<div ng-controller="settingsController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Bine ai venit, {{professor.name}}!</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hand" ng-click="logOut()">Log out</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="settings()" class="hand">Setari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="evaluation()" class="hand">Evaluari</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="attendance()" class="hand">Prezenta</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-click="schedule()" class="hand">Orar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/><br/><br/>
+    <div class="alert alert-danger" ng-show="settings.__request.error">{{settings.__request.message}}</div>
+    <div class="alert alert-success" ng-show="successSettings.__request.error">{{successSettings.__request.message}}</div>
+
+    <label>Parola veche</label>
+    <input class="form-control" type="password" ng-model="settings.old_password">
+    <br/>
+    <label>Parola noua</label>
+    <input class="form-control" type="password" ng-model="settings.new_password">
+    <br/>
+    <label>Parola noua</label>
+    <input class="form-control" type="password" ng-model="settings.retyped_new_password">
+    <br/>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="changePassword(settings)">Schimba parola</button>
+    <br/><br/><br/>
+    <div class="alert alert-danger" ng-show="settingsBeacon.__request.error">{{settingsBeacon.__request.message}}</div>
+    <div class="alert alert-success" ng-show="successSettingsBeacon.__request.error">{{successSettingsBeacon.__request.message}}</div>
+    <label>Adresa MAC beacon</label>
+    <input class="form-control" type="text" ng-model="beacon">
+    <br/>
+    <button class="btn btn-lg btn-primary claudiaButtonCenter" ng-click="changeBeacon(beacon)">Schimba adresa MAC beacon</button>
+    <br/><br/>
+
+</div>

@@ -1,0 +1,17 @@
+<div ng-controller="createTablesController" class="claudiaDivCenter" ng-init="init()">
+        <form id="createForm">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>Esti sigur ca vrei sa resetezi tabelele?</b></h3>
+                </div>
+                <div class="panel-body">
+                    odata resetate, continutul acestora va fi pierdut<br/><br/>
+                    
+                    <div class="floatButtonsRight">
+                        <button class="btn btn-lg btn-default " ng-click="cancelCreateTables()">Nu</button>
+                        <button class="btn btn-lg btn-danger floatButtonsRight" ng-click="createTables()">Da</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>

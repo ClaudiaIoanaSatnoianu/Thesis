@@ -1,0 +1,50 @@
+.claudiaDivCenter {
+    margin:0 auto;
+}
+
+.claudiaButtonCenter {
+    width: 100%;
+}
+
+.floatButtonsRight {
+    text-align: right;
+}
+
+.divFloatLeftLeft {
+     width:48%;
+     margin: 0 auto;
+     margin-right: 2%;
+     float: left;
+ }
+
+.divFloatLeftRight {
+    width:48%;
+    margin: 0 auto;
+    margin-Left: 2%;
+    float: left;
+}
+
+.divFloatLeftLeftThree {
+    width:32%;
+    margin: 0 auto;
+    margin-right: 2%;
+    float: left;
+}
+
+.divFloatLeft {
+    margin: 0 auto;
+    margin-right: 2%;
+    float: left;
+}
+
+.noMarginRight {
+    margin-right: 0%;
+}
+
+select > .placeholder {
+    display: none;
+}
+
+#startWeek {
+    width: 65px;
+}

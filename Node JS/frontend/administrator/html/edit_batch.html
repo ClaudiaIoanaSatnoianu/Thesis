@@ -1,0 +1,30 @@
+<div ng-controller="editBatchController" class="claudiaDivCenter" ng-init="init()">
+    <form>
+
+        <div class="alert alert-danger" ng-show="editBatch.__request.error">{{editBatch.__request.message}}</div>
+        <div class="divFloatLeftLeft">
+            <div class="form-group">
+                <label for="exampleSpecialization">Specializare</label>
+                <select id="exampleSpecialization" ng-model="batch.specialization_id" class="form-control" ng-required>
+                    <option ng-repeat="specialization in specializations" value="{{specialization.id}}">
+                        id: {{specialization.id}}, cod: {{specialization.code}}, denumire: {{specialization.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleYear">An</label>
+                <input type="text" class="form-control" id="exampleYear" ng-model="batch.year"/>
+            </div>
+        </div>
+        <div class="divFloatLeftRight">
+            <div class="form-group">
+                <label for="exampleName">Serie</label>
+                <input type="text" class="form-control" id="exampleName" ng-model="batch.name" capitalize/>
+            </div>
+            <br/>
+            <div class="floatButtonsRight">
+                <button class="btn btn-lg btn-default " ng-click="cancelEditBatch()">Renunta</button>
+                <button class="btn btn-lg btn-success floatButtonsRight" ng-click="editBatch(batch)">Salveaza</button>
+            </div>
+        </div>
+    </form>
+</div>
